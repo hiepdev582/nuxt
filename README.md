@@ -147,3 +147,43 @@ useSeoMeta({
 </script>
 
 ```
+
+4. `titleTemplate`, `templateParams`, `tagPosition`
+
+### VI. Transitions
+
+1. Global Transitions:
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+});
+```
+
+2. Layout Transitions:
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    layoutTransition: { name: "layout", mode: "out-in" },
+  },
+});
+```
+
+3. Page Transitions:
+
+```ts
+<script setup lang="ts">
+definePageMeta({
+  pageTransition: {
+    name: 'rotate',
+  },
+   layoutTransition: {
+    name: 'slide-in',
+  },
+})
+</script>
+
+```
