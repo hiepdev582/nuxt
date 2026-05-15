@@ -212,6 +212,30 @@ definePageMeta({
 
 ### VIII. Layers
 
+### IX. Layout
+
+```ts
+definePageMeta({
+  layout: "admin", // Sử dụng file admin.vue
+});
+```
+
+- Hoặc:
+
+```ts
+<template>
+  <NuxtLayout name="admin">
+    <p>Nội dung trang quản trị</p>
+  </NuxtLayout>
+</template>
+```
+
+- Hoặc:
+
+```ts
+setPageLayout("admin");
+```
+
 ---
 
 ## Nuxt Advanced
