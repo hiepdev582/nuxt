@@ -192,16 +192,22 @@ definePageMeta({
 
 1. `useFetch`
    ```ts
-   const { data, pending, error, refresh } = await useFetch("/api/modules");
+   const { data, status, error, refresh, clear } =
+     await useFetch("/api/modules");
    ```
-2. `useAsyncData`
+2. `useAsyncData`: Gọi nhiều API cùng lúc, sử dụng thư viện bên thứ ba (như Firebase, Apollo), hoặc cần xử lý/lọc dữ liệu trước khi trả về
    ```ts
-   const { data, pending, error, refresh } = await useAsyncData("movies", () =>
-     $fetch("https://api.nuxtjs.dev/movies"),
+   const { data, status, error, refresh, clear } = await useAsyncData(
+     "movies",
+     () => $fetch("https://api.nuxtjs.dev/movies"),
    );
    ```
 3. Các Options khác:
-   - `lazy`: Cho phép chuyển trang ngay lập tức mà không đợi dữ liệu tải xong (kết hợp với pending để hiển thị loading)
+   - `lazy`: Cho phép chuyển trang ngay lập tức mà không đợi dữ liệu tải xong (kết hợp với status pending để hiển thị loading)
    - `server`: Có cho phép lấy dữ liệu ở phía server hay không (mặc định là true)
-   - `pick`: Chỉ lấy một vài trường cụ thể từ kết quả API để giảm dung lượng tải
    - `watch`: Tự động gọi lại dữ liệu khi một biến reactive thay đổi (ví dụ: thay đổi số trang trong phân trang)
+   - `pick`: Chỉ lấy một vài trường cụ thể từ kết quả API để giảm dung lượng tải
+   - `transform`
+   - `status`: idle, pending, success, error
+
+### VIII. Layers
