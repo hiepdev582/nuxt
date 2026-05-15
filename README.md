@@ -211,3 +211,37 @@ definePageMeta({
    - `status`: idle, pending, success, error
 
 ### VIII. Layers
+
+### IX. Layout
+
+```ts
+definePageMeta({
+  layout: "admin", // Sử dụng file admin.vue
+});
+```
+
+- Hoặc:
+
+```ts
+<template>
+  <NuxtLayout name="admin">
+    <p>Nội dung trang quản trị</p>
+  </NuxtLayout>
+</template>
+```
+
+- Hoặc:
+
+```ts
+setPageLayout("admin");
+```
+
+---
+
+## Nuxt Advanced
+
+1. Lazy loading
+   - `<LazyVideoPlayer/>` thay vì `<VideoPlayer/>`
+2. Client & Server Components:
+   - `.client.vue`: Chỉ render ở phía trình duyệt (ví dụ: các chart, bản đồ cần đối tượng window)
+   - `.server.vue`: Chỉ render ở phía máy chủ. Điều này giúp giảm lượng JS gửi xuống client vì logic của nó không cần chạy lại ở trình duyệt
