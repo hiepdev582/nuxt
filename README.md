@@ -187,3 +187,21 @@ definePageMeta({
 </script>
 
 ```
+
+### VII. Data Fetching
+
+1. `useFetch`
+   ```ts
+   const { data, pending, error, refresh } = await useFetch("/api/modules");
+   ```
+2. `useAsyncData`
+   ```ts
+   const { data, pending, error, refresh } = await useAsyncData("movies", () =>
+     $fetch("https://api.nuxtjs.dev/movies"),
+   );
+   ```
+3. Các Options khác:
+   - `lazy`: Cho phép chuyển trang ngay lập tức mà không đợi dữ liệu tải xong (kết hợp với pending để hiển thị loading)
+   - `server`: Có cho phép lấy dữ liệu ở phía server hay không (mặc định là true)
+   - `pick`: Chỉ lấy một vài trường cụ thể từ kết quả API để giảm dung lượng tải
+   - `watch`: Tự động gọi lại dữ liệu khi một biến reactive thay đổi (ví dụ: thay đổi số trang trong phân trang)
