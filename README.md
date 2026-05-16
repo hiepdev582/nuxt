@@ -174,7 +174,29 @@ useSeoMeta({
 
 4. `titleTemplate`, `templateParams`, `tagPosition`
 
-### VII. Transitions
+### VII. Page
+
+1. Page Metadata: use `definePageMeta()`
+2. Special Metadata:
+   - `alias`: Alias routes
+   - `keepalive`: Keep alive routes
+   - `key`: Key routes
+   - `layout`: Layout routes
+   - `layoutTransition` and `pageTransition`: Layout and page transitions
+   - `middleware`: Middleware routes
+   - `name`: Name routes
+   - `path`: Path routes
+   - `props`: Props routes
+3. Typing Custom Metadata:
+   ```ts
+   declare module "#app" {
+     interface PageMeta {
+       pageType?: string;
+     }
+   }
+   ```
+
+### VIII. Transitions
 
 1. Global Transitions:
 
@@ -212,7 +234,7 @@ definePageMeta({
 
 ```
 
-### VIII. Data Fetching
+### IX. Data Fetching
 
 1. `useFetch`
    ```ts
@@ -234,7 +256,7 @@ definePageMeta({
    - `transform`
    - `status`: idle, pending, success, error
 
-### IX. Middleware
+### X. Middleware
 
 1. Loại:
    - **Global Middleware**: Tên file có hậu tố .global
@@ -245,7 +267,7 @@ definePageMeta({
    - **Page middleware**
    - **Named Middleware**
 
-### X. Layers
+### XI. Layers
 
 ---
 
