@@ -99,7 +99,31 @@ const color = ref('red')
    });
    ```
 
-### V. SEO and Meta
+### V. Layout
+
+```ts
+definePageMeta({
+  layout: "admin", // Sử dụng file admin.vue
+});
+```
+
+- Hoặc:
+
+```ts
+<template>
+  <NuxtLayout name="admin">
+    <p>Nội dung trang quản trị</p>
+  </NuxtLayout>
+</template>
+```
+
+- Hoặc:
+
+```ts
+setPageLayout("admin");
+```
+
+### VI. SEO and Meta
 
 1. Customize the head for your entire app
 
@@ -150,7 +174,29 @@ useSeoMeta({
 
 4. `titleTemplate`, `templateParams`, `tagPosition`
 
-### VI. Transitions
+### VII. Page
+
+1. Page Metadata: use `definePageMeta()`
+2. Special Metadata:
+   - `alias`: Alias routes
+   - `keepalive`: Keep alive routes
+   - `key`: Key routes
+   - `layout`: Layout routes
+   - `layoutTransition` and `pageTransition`: Layout and page transitions
+   - `middleware`: Middleware routes
+   - `name`: Name routes
+   - `path`: Path routes
+   - `props`: Props routes
+3. Typing Custom Metadata:
+   ```ts
+   declare module "#app" {
+     interface PageMeta {
+       pageType?: string;
+     }
+   }
+   ```
+
+### VIII. Transitions
 
 1. Global Transitions:
 
@@ -188,7 +234,7 @@ definePageMeta({
 
 ```
 
-### VII. Data Fetching
+### IX. Data Fetching
 
 1. `useFetch`
    ```ts
@@ -210,31 +256,18 @@ definePageMeta({
    - `transform`
    - `status`: idle, pending, success, error
 
-### VIII. Layers
+### X. Middleware
 
-### IX. Layout
+1. Loại:
+   - **Global Middleware**: Tên file có hậu tố .global
+   - **Anonymous (hoặc In-line) Middleware**
+   - **Named Middleware**: Khi một trang muốn dùng, bạn phải gọi tên nó ra trong hàm `definePageMeta`
+2. Thứ tự thực thi:
+   - **Global middleware** _(ưu tiên theo thứ tự bảng chữ cái của tên file, bạn có thể đánh số như 01.auth.global.ts, 02.analytics.global.ts để kiểm soát thứ tự)_
+   - **Page middleware**
+   - **Named Middleware**
 
-```ts
-definePageMeta({
-  layout: "admin", // Sử dụng file admin.vue
-});
-```
-
-- Hoặc:
-
-```ts
-<template>
-  <NuxtLayout name="admin">
-    <p>Nội dung trang quản trị</p>
-  </NuxtLayout>
-</template>
-```
-
-- Hoặc:
-
-```ts
-setPageLayout("admin");
-```
+### XI. Layers
 
 ---
 
